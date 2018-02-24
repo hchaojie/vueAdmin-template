@@ -2,6 +2,7 @@ import axios from 'axios'
 import { Message, MessageBox } from 'element-ui'
 import store from '../store'
 import { getToken } from '@/utils/auth'
+import qs from 'qs'
 
 // 创建axios实例
 const service = axios.create({
@@ -14,6 +15,11 @@ service.interceptors.request.use(config => {
   if (store.getters.token) {
     config.headers['X-Token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
   }
+
+  if (config.method === 'post') {
+    config.data = qs.stringify(config.data)
+  }
+
   return config
 }, error => {
   // Do something with request error
