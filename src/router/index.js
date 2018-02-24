@@ -41,6 +41,29 @@ export const constantRouterMap = [
   },
 
   {
+    path: '/posts',
+    component: Layout,
+    redirect: '/posts/list',
+    name: 'PostList',
+    meta: { title: '文章管理', icon: 'example' },
+    children: [
+      {
+        path: 'create',
+        name: 'CreatePost',
+        component: () => import('@/views/post/PostForm'),
+        meta: { title: '创建文章', icon: 'table' }
+      }
+      ,
+      {
+        path: 'list',
+        name: 'PostList',
+        component: () => import('@/views/post/PostList'),
+        meta: { title: '文章列表', icon: 'table' }
+      }
+    ]
+  },
+
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
@@ -58,19 +81,6 @@ export const constantRouterMap = [
         name: 'Tree',
         component: () => import('@/views/tree/index'),
         meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
-
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
       }
     ]
   },
