@@ -74,6 +74,9 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
+          this.$router.push({ path: '/' })
+          // disable login TODO
+          /**
           this.loading = true
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
@@ -81,6 +84,7 @@ export default {
           }).catch(() => {
             this.loading = false
           })
+          */
         } else {
           console.log('error submit!!')
           return false

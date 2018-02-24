@@ -1,21 +1,13 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name:{{name}}</div>
-    <div class="dashboard-text">roles:<span v-for='role in roles' :key='role'>{{role}}</span></div>
+    <div class="dashboard-text">欢迎使用blog4j！</div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 
 export default {
-  name: 'dashboard',
-  computed: {
-    ...mapGetters([
-      'name',
-      'roles'
-    ])
-  }
+  name: 'home'
 }
 </script>
 
@@ -27,6 +19,7 @@ export default {
   &-text {
     font-size: 30px;
     line-height: 46px;
+    text-align: center;
   }
 }
 </style>
